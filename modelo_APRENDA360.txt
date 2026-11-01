@@ -13,13 +13,13 @@ EMPLEADOS =
 
 EVENTOS =
     *id_evento +
-    id_curso +
+$CURSOS.id_curso* +
     inicio +
     horas
 
 ASISTENCIAS =
-    *(id_evento + numemp) +
-    atendidas +
+    $EVENTOS.id_evento* +
+    $EMPLEADOS.numemp* +
     cdiagnostica +
     cfinal + 
     medida_exposicion<[atendidas] / [horas]> +
