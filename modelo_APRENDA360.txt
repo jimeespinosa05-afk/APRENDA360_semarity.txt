@@ -1,0 +1,24 @@
+
+CURSOS =
+    *id_curso +
+    curso +
+    exposicion +
+    conocimientos
+
+EMPLEADOS =
+    *numemp +
+    nombre +
+    apellidos +
+    gerencia
+
+EVENTOS =
+    *id_evento +
+    id_curso +
+    inicio +
+    horas
+
+ASISTENCIAS =
+    *(id_evento + numemp) +
+    atendidas +
+    cdiagnostica +
+    cfinal
