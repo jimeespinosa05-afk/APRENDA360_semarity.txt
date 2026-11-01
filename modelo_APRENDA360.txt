@@ -1,29 +1,38 @@
 
+
 CURSOS =
     *id_curso +
     curso +
     exposicion +
-    conocimientos
+    conocimientos;
 
 EMPLEADOS =
     *numemp +
     nombre +
     apellidos +
-    gerencia
+    gerencia;
 
 EVENTOS =
     *id_evento +
-$CURSOS.id_curso* +
+    $CURSOS.id_curso* +
     inicio +
-    horas
+    horas;
 
 ASISTENCIAS =
-    $EVENTOS.id_evento* +
-    $EMPLEADOS.numemp* +
+    *(
+        $EVENTOS.id_evento* +
+        $EMPLEADOS.numemp*
+    ) +
+    atendidas +
     cdiagnostica +
-    cfinal + 
-    medida_exposicion<[atendidas] / [horas]> +
-    medida_conocimiento<([cfinal] - [cdiagnostica]) / 100> +
-    icg<([medida_exposicion] * [exposicion]) +
-        ([medida_conocimiento] * [conocimientos])>
-
+    cfinal +
+    medida_exposicion<
+        [atendidas] / $EVENTOS.horas
+    > +
+    medida_conocimiento<
+        ([cfinal] - [cdiagnostica]) / 100
+    > +
+    icg<
+        ([medida_exposicion] * $CURSOS.exposicion) +
+        ([medida_conocimiento] * $CURSOS.conocimientos)
+    >;
