@@ -21,4 +21,9 @@ ASISTENCIAS =
     *(id_evento + numemp) +
     atendidas +
     cdiagnostica +
-    cfinal
+    cfinal + 
+    medida_exposicion<[atendidas] / [horas]> +
+    medida_conocimiento<([cfinal] - [cdiagnostica]) / 100> +
+    icg<([medida_exposicion] * [exposicion]) +
+        ([medida_conocimiento] * [conocimientos])>
+
